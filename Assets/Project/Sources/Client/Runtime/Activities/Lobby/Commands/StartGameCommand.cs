@@ -33,12 +33,16 @@ namespace Client.Runtime
 
         private void Complete()
         {
-            _operation.completed -= ActivateScene;
+            if (_operation != default)
+            {
+                _operation.completed -= ActivateScene;
+            }
             _operation = default;
         }
 
-        private void OnDisable()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             Complete();
         }
     }
