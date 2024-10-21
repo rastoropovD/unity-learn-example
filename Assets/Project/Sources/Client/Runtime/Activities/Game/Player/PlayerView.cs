@@ -12,6 +12,7 @@ namespace Client.Runtime
         public Rigidbody2D RigidBody => _rigidbody;
         
         public event Action OnPlayerGrounded;
+        public event Action OnObstacleCollided;
 
         private void Awake()
         {
@@ -23,6 +24,11 @@ namespace Client.Runtime
             if (other.gameObject.CompareTag("Ground"))
             {
                 OnPlayerGrounded?.Invoke();   
+            }
+
+            if (other.gameObject.CompareTag("Obstacle"))
+            {
+                OnObstacleCollided?.Invoke();
             }
         }
     }

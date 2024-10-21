@@ -9,7 +9,7 @@ namespace Client.Runtime.Framework
     {
         [SerializeField] private Button _button;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             Assert.IsNotNull(_button, $"[ButtonCommand] Button is required");
 

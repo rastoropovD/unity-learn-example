@@ -20,6 +20,7 @@ namespace Client.Runtime
         public override void Enable()
         {
             _playerView.OnPlayerGrounded += PlayerGrounded;
+            _playerView.OnObstacleCollided += ObstacleCollided;
         }
 
         private void PlayerGrounded()
@@ -27,9 +28,15 @@ namespace Client.Runtime
             _playerModel.IsGrounded = true;
         }
 
+        private void ObstacleCollided()
+        {
+            Debug.LogError("Player is dead!");
+        }
+
         public override void Disable()
         {
             _playerView.OnPlayerGrounded -= PlayerGrounded;
+            _playerView.OnObstacleCollided -= ObstacleCollided;
         }
     }
 }
